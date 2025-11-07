@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import { useParams } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
@@ -51,6 +52,11 @@ const casesData: Record<string, any> = {
 export default function CasePageClient() {
   const params = useParams()
   const slug = params.slug as string
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
+
   const caseData = casesData[slug]
 
   if (!caseData) {
