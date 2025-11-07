@@ -43,10 +43,6 @@ export default function Home() {
                 Email
               </a>
             </div>
-
-            <div className="border-t border-border pt-12 mt-12">
-              <p className="text-sm text-muted-foreground mb-4">Selected Work</p>
-            </div>
           </div>
         </section>
 

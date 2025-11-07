@@ -48,29 +48,32 @@ export default function CasesList() {
     <div className="grid gap-8">
       {cases.map((caseItem) => (
         <Link key={caseItem.id} href={`/cases/${caseItem.slug}`} className="group block">
-          <div className="border-b border-border pb-8 hover:pb-8 transition-colors">
-            <div className="mb-6 overflow-hidden rounded aspect-video bg-card">
+          <div className="border-b border-border pb-8 flex flex-col md:grid md:grid-cols-3 md:gap-8 md:items-start">
+            <div className="mb-6 md:mb-0 overflow-hidden rounded aspect-square md:aspect-video bg-card order-2 md:order-1">
               <Image
                 src={caseItem.thumbnail || "/placeholder.svg"}
                 alt={caseItem.title}
-                width={400}
+                width={300}
                 height={300}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
 
-            <div className="flex justify-between items-start mb-4">
-              <div>
+            <div className="order-1 md:order-2 md:col-span-2 flex justify-between items-start">
+              <div className="flex-1">
                 <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
                   {caseItem.category} — {caseItem.year}
                 </p>
-                <h2 className="text-2xl md:text-3xl font-light group-hover:translate-x-2 transition-transform">
+                <h2 className="text-2xl md:text-3xl font-light group-hover:translate-x-2 transition-transform mb-4">
                   {caseItem.title}
                 </h2>
+                <p className="text-muted-foreground text-sm md:text-base max-w-2xl">{caseItem.description}</p>
               </div>
-              <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 transition-opacity mt-2" />
+              <ArrowRight
+                size={20}
+                className="opacity-0 group-hover:opacity-100 transition-opacity mt-1 ml-4 flex-shrink-0"
+              />
             </div>
-            <p className="text-muted-foreground text-sm md:text-base max-w-2xl">{caseItem.description}</p>
           </div>
         </Link>
       ))}
